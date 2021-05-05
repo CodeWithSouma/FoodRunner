@@ -30,6 +30,7 @@ class LoginActivity : AppCompatActivity(), OnClickListener {
             if (isLoggedIn){
                 val intent = Intent(this, DashBoardActivity::class.java)
                 startActivity(intent)
+                this.finish()
             }
 
         }
