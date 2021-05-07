@@ -59,6 +59,9 @@ class LoginActivity : AppCompatActivity(), OnClickListener {
             this.finish()
 
         }else{
+            etMobileNumber.text.clear()
+            etPassword.text.clear()
+
             savePreferences(false)
             Toast.makeText(this,"Invalid credential",Toast.LENGTH_SHORT).show()
         }
