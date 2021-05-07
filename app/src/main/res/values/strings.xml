@@ -13,4 +13,6 @@
     <string name="order_history">Order History</string>
     <string name="faqs">FAQs</string>
     <string name="log_out">Log out</string>
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
 </resources>

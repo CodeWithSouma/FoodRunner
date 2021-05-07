@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity(), OnClickListener {
         if (sharedPreferences != null){
             val isLoggedIn = sharedPreferences.getBoolean(getString(R.string.isLoggedIn),false)
             if (isLoggedIn){
-                val intent = Intent(this, DashBoardActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 this.finish()
             }
@@ -54,7 +54,7 @@ class LoginActivity : AppCompatActivity(), OnClickListener {
         if (validateLoginCredential(mobileNumber, password)){
             savePreferences(true)
 
-            val intent =  Intent(this, DashBoardActivity::class.java)
+            val intent =  Intent(this, MainActivity::class.java)
             startActivity(intent)
 
         }else{
