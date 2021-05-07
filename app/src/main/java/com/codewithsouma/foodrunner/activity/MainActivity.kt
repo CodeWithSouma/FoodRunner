@@ -1,5 +1,6 @@
 package com.codewithsouma.foodrunner.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -76,11 +77,20 @@ class MainActivity : AppCompatActivity(), OnNavigationItemSelectedListener {
                 displayMessage("Faqs button is clicked")
             }
             R.id.logOut -> {
-                displayMessage("Logout button is clicked")
+               savePreferences(false)
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                this.finish()
             }
-            else -> displayMessage("hello")
         }
         return true
+    }
+
+    private fun savePreferences(value: Boolean) {
+        val preferences = getSharedPreferences(getString(R.string.loginPreferences), MODE_PRIVATE)
+        val editor = preferences.edit()
+        editor.putBoolean(getString(R.string.isLoggedIn), value)
+        editor.apply()
     }
 
     private fun displayMessage(message: String) {

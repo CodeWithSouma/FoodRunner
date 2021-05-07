@@ -56,6 +56,7 @@ class LoginActivity : AppCompatActivity(), OnClickListener {
 
             val intent =  Intent(this, MainActivity::class.java)
             startActivity(intent)
+            this.finish()
 
         }else{
             savePreferences(false)
