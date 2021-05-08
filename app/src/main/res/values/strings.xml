@@ -20,4 +20,9 @@
     <string name="enter_your_registered_mobile_number_and_email_below">Enter your registered mobile \nnumber and email below:</string>
     <string name="email_address">Email Address</string>
     <string name="next">Next</string>
+    <string name="name_min_3_characters">Name (Min. 3 characters)</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="password_min_4_characters">Password (Min. 4 characters)</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
 </resources>

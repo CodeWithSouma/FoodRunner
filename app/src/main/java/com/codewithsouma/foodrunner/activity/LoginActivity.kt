@@ -86,4 +86,9 @@ class LoginActivity : AppCompatActivity(), OnClickListener {
         val intent = Intent(this, ForgotPasswordActivity::class.java)
         startActivity(intent)
     }
+
+    fun startSignUpActivity(view: View) {
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
+    }
 }

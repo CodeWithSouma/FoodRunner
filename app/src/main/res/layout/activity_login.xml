@@ -28,9 +28,9 @@
         android:drawableStart="@drawable/phone_icon"
         android:hint="@string/mobile_number_10_digits"
         android:inputType="number"
+        android:maxLength="10"
         android:minHeight="50dp"
         android:padding="5dp"
-        android:maxLength="10"
         android:textSize="17sp" />
 
     <EditText
@@ -73,10 +73,10 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
         android:gravity="center_horizontal"
+        android:onClick="startForgetPasswordActivity"
         android:padding="5dp"
         android:text="@string/forgot_password"
         android:textColor="@color/white"
-        android:onClick="startForgetPasswordActivity"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -90,6 +90,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="20dp"
         android:gravity="center_horizontal"
+        android:onClick="startSignUpActivity"
         android:padding="5dp"
         android:text="@string/sign_up_now"
         android:textColor="@color/white"
