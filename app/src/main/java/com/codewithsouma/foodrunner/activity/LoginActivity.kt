@@ -1,7 +1,6 @@
 package com.codewithsouma.foodrunner.activity
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -24,23 +23,13 @@ class LoginActivity : AppCompatActivity(), OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val sharedPreferences:SharedPreferences? = getSharedPreferences(getString(R.string.loginPreferences), MODE_PRIVATE)
-        if (sharedPreferences != null){
-            val isLoggedIn = sharedPreferences.getBoolean(getString(R.string.isLoggedIn),false)
-            if (isLoggedIn){
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                this.finish()
-            }
-
-        }
 
         setContentView(R.layout.activity_login)
 
         etMobileNumber = findViewById(R.id.etMobileNumber)
         etPassword = findViewById(R.id.etPassword)
         btnLogin = findViewById(R.id.btnLogin)
-        tvForgotPassword = findViewById(R.id.tvForgotPassword)
+        tvForgotPassword = findViewById(R.id.tvForgotPasswordLabel)
         tvSignUp = findViewById(R.id.tvSignUp)
 
         btnLogin.setOnClickListener(this)
@@ -51,22 +40,34 @@ class LoginActivity : AppCompatActivity(), OnClickListener {
         val mobileNumber = etMobileNumber.text.toString().trim()
         val password = etPassword.text.toString().trim()
 
-        if (validateLoginCredential(mobileNumber, password)){
-            savePreferences(true)
+        if (etMobileNumber.length() == 0)
+            etMobileNumber.error = "Mobile number required"
 
-            val intent =  Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            this.finish()
+        if (etPassword.length() == 0)
+            etPassword.error = "Password required"
 
-        }else{
-            etMobileNumber.text.clear()
-            etPassword.text.clear()
+        if (formIsNotEmpty()) {
+            if (validateLoginCredential(mobileNumber, password)) {
+                savePreferences(true)
 
-            savePreferences(false)
-            Toast.makeText(this,"Invalid credential",Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                this.finish()
+
+            } else {
+
+                etMobileNumber.text.clear()
+                etPassword.text.clear()
+
+                savePreferences(false)
+                Toast.makeText(this, "Invalid credential", Toast.LENGTH_SHORT).show()
+            }
+
         }
+    }
 
-
+    private fun formIsNotEmpty(): Boolean {
+        return etMobileNumber.text.isNotEmpty() && etPassword.text.isNotEmpty()
     }
 
     private fun savePreferences(value: Boolean) {
@@ -80,4 +81,9 @@ class LoginActivity : AppCompatActivity(), OnClickListener {
         mobileNumber: String,
         password: String
     ) = MOBILE_NUMBER == mobileNumber && PASSWORD == password
+
+    fun startForgetPasswordActivity(view: View) {
+        val intent = Intent(this, ForgotPasswordActivity::class.java)
+        startActivity(intent)
+    }
 }
